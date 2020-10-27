@@ -30,9 +30,10 @@ class Rotation(object):
         # incompatibility between Torchvision 0.5 and Pillow 7.0.0
         # https://github.com/pytorch/vision/issues/1759#issuecomment-583826810
         # Will be fixed in Torchvision 0.6
-        fill = tuple([0] * len(image.getbands()))
+        # fill = tuple([0] * len(image.getbands()))
         return F.rotate(image, self.angle % 360, self.resample,
-                        self.expand, self.center, fill=fill)
+                        self.expand, self.center)
+                        # fill=fill)
 
     def __hash__(self):
         return hash(repr(self))
